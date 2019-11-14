@@ -1,0 +1,29 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vaimo_QuoteModule::quotes"
+             title="Quotes"
+             translate="quotes"
+             module="Vaimo_QuoteModule"
+             sortOrder="20"
+             dependsOnModule="Vaimo_QuoteModule"
+             resource="Vaimo_QuoteModule::quotes"/>
+
+        <add id="Quote_UiGrid::quote_grid"
+             title="Quotes List"
+             translate="title"
+             module="Vaimo_QuoteModule"
+             sortOrder="10"
+             parent="Vaimo_QuoteModule::quotes"
+             action="quote_module"
+             resource="Vaimo_QuoteModule::quotes"/>
+
+        <add id="Quote_UiGrid::quote_grid_settings"
+             title="Module Settings"
+             translate="title"
+             module="Vaimo_QuoteModule"
+             sortOrder="20"
+             parent="Vaimo_QuoteModule::quotes"
+             action="quote_module"
+             resource="Vaimo_QuoteModule::quotes"/>
+    </menu>
+</config>
