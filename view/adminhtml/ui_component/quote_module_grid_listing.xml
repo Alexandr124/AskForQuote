@@ -37,28 +37,48 @@
         </argument>
     </dataSource>
 
-    <listingToolbar name="listing_top">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="sticky" xsi:type="boolean">true</item>
-            </item>
-        </argument>
-        <bookmark name="bookmarks"/>
-        <columnsControls name="columns_controls"/>
-        <filterSearch name="fulltext"/>
+    <!--<listingToolbar name="listing_top">-->
+        <!--<argument name="data" xsi:type="array">-->
+            <!--<item name="config" xsi:type="array">-->
+                <!--<item name="sticky" xsi:type="boolean">true</item>-->
+            <!--</item>-->
+        <!--</argument>-->
+        <!--<bookmark name="bookmarks"/>-->
+        <!--<columnsControls name="columns_controls"/>-->
+        <!--<filterSearch name="fulltext"/>-->
 
-        <paging name="listing_paging"/>
-        <exportButton name="export_button"/>
-    </listingToolbar>
+        <!--<paging name="listing_paging"/>-->
+        <!--<exportButton name="export_button"/>-->
+    <!--</listingToolbar>-->
 
     <columns name="quote_module_grid_columns">
 
+        <settings>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="*/*/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="indexField" xsi:type="string">quote_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="selectProvider" xsi:type="string">quote_module_grid_listing.quote_module_grid_listing.quote_module_grid_columns.ids</param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">quote_module_grid_listing.quote_module_grid_listing.quote_module_grid_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+
         <selectionsColumn name="ids">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">entity_id</item>
-                </item>
-            </argument>
+            <settings>
+                <indexField>quote_id</indexField>
+            </settings>
         </selectionsColumn>
 
         <column name="quote_id">
@@ -72,6 +92,7 @@
         <column name="customer_first_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Name</item>
                 </item>
             </argument>
@@ -80,6 +101,7 @@
         <column name="customer_last_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Surname</item>
                 </item>
             </argument>
@@ -88,6 +110,7 @@
         <column name="customer_phone_number">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Number</item>
                 </item>
             </argument>
@@ -96,6 +119,7 @@
         <column name="customer_email">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">eMail</item>
                 </item>
             </argument>
@@ -104,6 +128,7 @@
         <column name="customer_comment">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Comment</item>
                 </item>
             </argument>
@@ -130,6 +155,7 @@
         <column name="status">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Status</item>
                 </item>
             </argument>

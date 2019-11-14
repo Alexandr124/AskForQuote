@@ -32,6 +32,8 @@ interface  QuoteInterface
 
     const COMMENT                   = 'customer_comment';
 
+    const QUOTE_DATE                = 'quote_date';
+
     const QUOTE_STATUS              = 'status';
 
 
@@ -106,5 +108,9 @@ interface  QuoteInterface
      * @return mixed
      */
     public function setQuoteStatus($status);
+
+    public function getQuoteDate();
+
+    public function setQuoteDate($quote_date);
 
 }

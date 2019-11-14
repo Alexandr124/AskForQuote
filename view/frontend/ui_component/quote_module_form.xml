@@ -37,7 +37,7 @@
         <settings>
             <submitUrl path="*/*/save"/>
         </settings>
-        <dataProvider class="Vaimo\QuoteModule\DataProvider\BaseQuoteProvider" name="quote_module_form_data_source">
+        <dataProvider class="Vaimo\QuoteModule\DataProvider\Frontend\CustomerDataProvider" name="quote_module_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>quote_id</primaryFieldName>
@@ -145,22 +145,17 @@
             </argument>
         </field>
 
-        <field name="status">
+        <field name="mybutton" >
             <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Vaimo\QuoteModule\Model\Category\Attribute\Source\Category</item>
                 <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">Quote Status</item>
-                    <item name="formElement" xsi:type="string">select</item>
-                    <item name="source" xsi:type="string">flip</item>
-                    <item name="sortOrder" xsi:type="number">70</item>
-                    <item name="dataScope" xsi:type="string">status</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">false</item>
-                    </item>
+                    <item name="component" xsi:type="string">Vaimo_QuoteModule/js/button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">button</item>
+                    <item name="title" xsi:type="string">Send</item>
                 </item>
             </argument>
         </field>
+
 
     </fieldset>
 </form>

@@ -91,4 +91,14 @@ class Quote extends AbstractModel implements QuoteInterface
     {
         $this->setData(QuoteInterface::MAIL, $mail);
     }
+
+    public function getQuoteDate()
+    {
+        return $this->getData(QuoteInterface::QUOTE_DATE);
+    }
+
+    public function setQuoteDate($quote_date)
+    {
+        $this->setData(QuoteInterface::QUOTE_DATE, $quote_date);
+    }
 }
