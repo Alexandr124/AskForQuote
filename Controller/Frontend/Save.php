@@ -25,9 +25,19 @@ class Save extends Action
     public function execute()
     {
         $formData = $this->getRequest()->getParams();
+        $email = $this->getRequest()->getParam('customer_email');
+
         try{
             $this->repository->save($this->quoteFactory->create()->setData($formData));
-            $this->messageManager->addSuccessMessage(__('Quote has been saved.'));
+//            $this->messageManager->addSuccessMessage(__('Quote has been saved.'));
+
+            $textDisplay = new \Magento\Framework\DataObject(array('text' => 'Text without Observer'));
+//            $this->_eventManager->dispatch('ask_for_quote_form_sent', ['mp_text' => $textDisplay]);
+            $this->_eventManager->dispatch('ask_for_quote_form_sent', ['findMail' => $email]);
+
+            $this->messageManager->addSuccessMessage($textDisplay->toString());
+
+
         } catch (\Exception $e){
             if ($e->getMessage()) {
                 $this->messageManager->addWarningMessage($e->getMessage());

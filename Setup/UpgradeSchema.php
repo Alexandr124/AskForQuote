@@ -33,6 +33,57 @@ class UpgradeSchema implements UpgradeSchemaInterface
             );
         }
 
+        if (version_compare($context->getVersion(), '1.0.3', '<')) {
+            $table = $setup->getConnection()->newTable(
+                $setup->getTable('vaimo_quote_archive')
+            )->addColumn(
+                'quote_id',
+                \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                null,
+                ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
+                'Id'
+            )->addColumn(
+                'customer_first_name',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                255,
+                [],
+                'First Name'
+            )->addColumn(
+                'customer_last_name',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                255,
+                [],
+                'Last Name'
+            )->addColumn(
+                'customer_phone_number',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                255,
+                [],
+                'Phone Number'
+            )->addColumn(
+                'customer_email',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                255,
+                [],
+                'Phone email'
+            )->addColumn(
+                'customer_comment',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                255,
+                [],
+                'Comment'
+            )->addColumn(
+                'quote_date',
+                \Magento\Framework\DB\Ddl\Table::TYPE_DATE,
+                255,
+                [],
+                'Date of receiving a quote'
+            )->setComment(
+                'Table'
+            );
+            $setup->getConnection()->createTable($table);
+
+        }
 
         $setup->endSetup();
     }

@@ -16,56 +16,46 @@ use Magento\Framework\Exception\NoSuchEntityException;
 
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface;
-use Vaimo\QuoteModule\Model\ResourceModel\Quote as ResourceModel;
+use Vaimo\QuoteModule\Model\ResourceModel\Archive as ResourceModel;
 
-use Vaimo\QuoteModule\Model\QuoteFactory;
-use Vaimo\QuoteModule\Model\ResourceModel\Quote\CollectionFactory;
+use Vaimo\QuoteModule\Model\ArchiveFactory;
+use Vaimo\QuoteModule\Model\ResourceModel\Archive\CollectionFactory;
 
 
 /**
  * Class QuoteRepository
  * @package Vaimo\Quote\Model
  */
-class QuoteRepository implements QuoteRepositoryInterface
+class ArchiveRepository implements QuoteRepositoryInterface
 {
 
-    protected $archiveResource;
-    /** @var ResourceModel */
     protected $resource;
-    /** @var QuoteFactory  */
-    protected $quoteFactory;
-    /** @var CollectionProcessorInterface */
+    protected $archiveFactory;
     protected $collectionProcessor;
-    /** @var CollectionFactory */
     protected $collectionFactory;
 
     private $resourceModel;
 
-
     public function __construct(
         ResourceModel $resource,
-        QuoteFactory $quoteFactory,
-        \Vaimo\QuoteModule\Model\ResourceModel\Quote $resourceModel,
+        ArchiveFactory $archiveFactory,
+        \Vaimo\QuoteModule\Model\ResourceModel\Archive $resourceModel,
         CollectionProcessorInterface $collectionProcessor,
         CollectionFactory $collectionFactory
 
     ) {
         $this->resource                 = $resource;
         $this->resourceModel            = $resourceModel;
-        $this->quoteFactory             = $quoteFactory;
+        $this->archiveFactory           = $archiveFactory;
         $this->collectionProcessor      = $collectionProcessor;
         $this->collectionFactory        = $collectionFactory;
     }
 
 
-    /**
-     * @param $id
-     * @return mixed
-     * @throws NoSuchEntityException
-     */
+
     public function getById($id)
     {
-        $quote = $this->quoteFactory->create();
+        $quote = $this->archiveFactory->create();
         $this->resource->load($quote, $id);
         if (!$quote->getId()) {
             throw new NoSuchEntityException(__('Quote with id "%1" does not exist.', $id));
@@ -73,10 +63,7 @@ class QuoteRepository implements QuoteRepositoryInterface
         return $quote;
     }
 
-    /**
-     * @param $id
-     * @return mixed|void
-     */
+
     public function deleteById($id)
     {
         try {
@@ -86,39 +73,34 @@ class QuoteRepository implements QuoteRepositoryInterface
         }
     }
 
-    /**
-     * @param SearchCriteriaInterface $searchCriteria
-     * @return mixed|void
-     */
-    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria)
-    {
-        // TODO: Implement getList() method.
-    }
 
-    /**
-     * @param QuoteInterface $quote
-     * @return mixed|QuoteInterface
-     * @throws CouldNotSaveException
-     */
-    public function save(QuoteInterface $quote)
+    public function save(QuoteInterface $archive)
     {
         try {
-            $this->resourceModel->save($quote);
+            $this->resourceModel->save($archive);
         } catch (\Exception $exception) {
             throw new \Magento\Framework\Exception\CouldNotSaveException(__($exception->getMessage()));
         }
-        return $quote;
+        return $archive;
 
     }
     /** {@inheritdoc} */
-    public function delete(QuoteInterface $quote)
+    public function delete(QuoteInterface $archive)
     {
         try {
-            $this->resource->delete($quote);
+            $this->resource->delete($archive);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__($exception->getMessage()));
         }
         return $this;
     }
 
+    /**
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @return mixed
+     */
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria)
+    {
+        // TODO: Implement getList() method.
+    }
 }

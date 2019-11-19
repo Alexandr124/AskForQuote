@@ -4,5 +4,9 @@
         <route id="quote_module" frontName="quote_module">
             <module name="Vaimo_QuoteModule"/>
         </route>
+
+        <route id="quote_archive" frontName="quote_archive">
+            <module name="Vaimo_QuoteModule"/>
+        </route>
     </router>
 </config>

@@ -40,4 +40,5 @@ interface QuoteRepositoryInterface
      * @return mixed
      */
     public function save(\Vaimo\QuoteModule\Api\Data\QuoteInterface $quote);
+
 }

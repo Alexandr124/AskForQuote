@@ -11,7 +11,7 @@ define(['jquery', 'underscore', 'uiRegistry', 'Magento_Ui/js/form/components/but
             action: function () {
                 $.ajax({
                     type: "POST",
-                    url: "/demotest/quote_form/frontend/save",
+                    url: "/firstproject/quote_form/frontend/save",
                     data: mydata.data
                 })
             }

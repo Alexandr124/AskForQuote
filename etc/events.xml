@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!--<event name="ask_for_quote_form_sent">-->
+        <!--<observer name="mp_display_text" instance="Vaimo\QuoteModule\Observer\ChangeDisplayTextObserver" />-->
+    <!--</event>-->
+
+    <!--<event name="customer_register_success">-->
+    <event name="ask_for_quote_form_sent">
+        <observer name="bss_email_customer_register" instance="Vaimo\QuoteModule\Observer\CustomerRegisterObserver"/>
+    </event>
+
+    <event name="quote_was_deleted">
+        <observer name="vaimo_add_to_archive" instance="Vaimo\QuoteModule\Observer\AddToArchive"/>
+    </event>
+
+</config>

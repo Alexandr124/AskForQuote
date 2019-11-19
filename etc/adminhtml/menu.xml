@@ -18,12 +18,12 @@
              resource="Vaimo_QuoteModule::quotes"/>
 
         <add id="Quote_UiGrid::quote_grid_settings"
-             title="Module Settings"
+             title="Archive"
              translate="title"
              module="Vaimo_QuoteModule"
              sortOrder="20"
              parent="Vaimo_QuoteModule::quotes"
-             action="quote_module"
+             action="quote_archive"
              resource="Vaimo_QuoteModule::quotes"/>
     </menu>
 </config>

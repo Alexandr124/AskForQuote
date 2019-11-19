@@ -15,6 +15,7 @@ use Magento\Framework\Registry;
 
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as  Repository;
 use Vaimo\QuoteModule\Controller\Adminhtml\Base;
+use Vaimo\QuoteModule\Model\ArchiveRepository;
 use Vaimo\QuoteModule\Model\QuoteFactory;
 
 class InlineEdit extends Base
@@ -39,6 +40,7 @@ class InlineEdit extends Base
     public function __construct(FilterGroupBuilder $filterGroupBuilder,
                                 ResourceConnection $resource,
                                 Repository $repository,
+                                ArchiveRepository $archiveRepository,
                                 FilterBuilder $filterBuilder,
                                 Registry $registry,
                                 SessionManagerInterface $sessionManager,
@@ -51,9 +53,10 @@ class InlineEdit extends Base
     ) {
         $this->filterGroupBuilder = $filterGroupBuilder;
         $this->filterBuilder = $filterBuilder;
+        $this->archiveRepository = $archiveRepository;
         $this->searchBuilderFactory = $searchCriteriaBuilderFactory;
         $this->jsonFactory = $jsonFactory;
-        parent::__construct($resource, $context, $registry, $pageFactory, $sessionManager, $repository, $quoteFactory, $logger  );
+        parent::__construct($resource, $context, $registry, $pageFactory, $sessionManager, $repository, $archiveRepository, $quoteFactory, $logger  );
     }
 
     public function execute()

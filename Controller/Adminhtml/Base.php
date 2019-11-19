@@ -17,6 +17,7 @@ use Magento\Framework\Session\SessionManagerInterface;
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 use Vaimo\QuoteModule\Model\QuoteFactory;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
+use Vaimo\QuoteModule\Model\ArchiveRepository;
 
 abstract class Base extends Action
 {
@@ -36,6 +37,7 @@ abstract class Base extends Action
     protected $resultPage;
     protected $sessionManager;
     protected $repository;
+    protected $archiveRepository;
 
     protected $logger;
 
@@ -47,6 +49,7 @@ abstract class Base extends Action
         PageFactory $pageFactory,
         SessionManagerInterface $sessionManager,
         Repository $repository,
+        ArchiveRepository $archiveRepository,
         QuoteFactory $factory,
         LoggerInterface $logger
     ){
@@ -55,6 +58,7 @@ abstract class Base extends Action
         $this->pageFactory    = $pageFactory;
         $this->sessionManager  = $sessionManager;
         $this->repository     = $repository;
+        $this->archiveRepository = $archiveRepository;
         $this->modelFactory   = $factory;
         $this->logger         = $logger;
         parent::__construct($context);

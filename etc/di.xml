@@ -3,6 +3,7 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="quote_module_grid_listing_data_source" xsi:type="string">Vaimo\QuoteModule\Model\ResourceModel\Quote\Grid\Collection</item>
+                <item name="quote_archive_grid_listing_data_source" xsi:type="string">Vaimo\QuoteModule\Model\ResourceModel\Archive\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
