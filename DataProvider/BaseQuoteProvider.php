@@ -8,7 +8,6 @@
 
 namespace Vaimo\QuoteModule\DataProvider;
 
-
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory;
 use Magento\Ui\DataProvider\AbstractDataProvider;

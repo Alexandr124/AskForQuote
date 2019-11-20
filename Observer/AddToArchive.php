@@ -5,7 +5,6 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 use Vaimo\QuoteModule\Model\ArchiveFactory;
 
 use Vaimo\QuoteModule\Model\ArchiveRepository as Repository;
@@ -13,7 +12,6 @@ use Vaimo\QuoteModule\Model\ArchiveRepository as Repository;
 
 class AddToArchive implements ObserverInterface
 {
-//    protected $archiveResource;
     protected $repository;
     protected $modelFactory;
     /**
@@ -23,11 +21,9 @@ class AddToArchive implements ObserverInterface
 
     public function __construct(
 
-//        ResourceModel $archiveResource,
         Repository $repostitory,
         ArchiveFactory $factory
     ) {
-//        $this->archiveResource = $archiveResource;
         $this->repository = $repostitory;
         $this->modelFactory   = $factory;
     }
@@ -39,7 +35,6 @@ class AddToArchive implements ObserverInterface
     {
         $deletedQuote = $observer->getData('deletedModel');
         $model = $this->modelFactory->create();
-//        $model->setData($deletedQuote);
 
         $model->setFirstName($deletedQuote->getFirstName());
         $model->setLastName($deletedQuote->getLastName());
@@ -48,13 +43,6 @@ class AddToArchive implements ObserverInterface
         $model->setComment($deletedQuote->getComment());
         $model->setQuoteDate($deletedQuote->getQuoteDate());
 
-
-
-
-//        try {
-//            $this->archiveResource->save($deletedQuote);
-//        } catch (\Exception $e) {
-//        }
 
         try {
             $this->repository->save($model);

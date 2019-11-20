@@ -2,12 +2,9 @@
 
 namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
 
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 
 use Vaimo\Quote\Api\Data\QuoteInterface;
-use Vaimo\QuoteModule\Api\QuoteRepositoryInterface;
 use Vaimo\QuoteModule\Controller\Adminhtml\Base;
 use Vaimo\QuoteModule\Model\ArchiveFactory;
 

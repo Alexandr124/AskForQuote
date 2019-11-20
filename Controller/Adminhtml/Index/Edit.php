@@ -5,14 +5,12 @@
  * Date: 2019-11-13
  * Time: 22:43
  */
-
 namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
 
 use Vaimo\QuoteModule\Controller\Adminhtml\Base;
 
 class Edit extends Base
 {
-
     const TITLE = 'Quote Edit';
 
     public function execute()
