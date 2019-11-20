@@ -37,7 +37,6 @@ interface  QuoteInterface
     const QUOTE_STATUS              = 'status';
 
 
-
     /**
      * @return mixed
      */
