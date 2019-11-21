@@ -13,4 +13,8 @@
         <observer name="vaimo_add_to_archive" instance="Vaimo\QuoteModule\Observer\AddToArchive"/>
     </event>
 
+    <event name="quote_reply_sent">
+        <observer name="vaimo_send_quote_reply" instance="Vaimo\QuoteModule\Observer\SendReply"/>
+    </event>
+
 </config>

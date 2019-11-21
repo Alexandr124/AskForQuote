@@ -11,6 +11,7 @@ class Actions extends Column
 {
     const URL_PATH_EDIT = 'quote_module/index/edit';
     const URL_PATH_DELETE = 'quote_module/index/delete';
+    const URL_PATH_REPLY = 'quote_module/index/reply';
 
     const IDENTIFIRE = 'quote_id';
     /** @var UrlInterface */
@@ -32,6 +33,7 @@ class Actions extends Column
         array $components = [],
         array $data = [],
         $editUrl = self::URL_PATH_EDIT
+
     ) {
         $this->urlBuilder = $urlBuilder;
         $this->editUrl = $editUrl;
@@ -55,6 +57,10 @@ class Actions extends Column
                             'title' => __('Delete "${ $.$data.quote_id }"'),
                             'message' => __('Are you sure you wan\'t to delete a "${ $.$data.quote_id}" record?')
                         ]
+                    ];
+                    $item[$name]['reply'] = [
+                        'href' => $this->urlBuilder->getUrl(self::URL_PATH_REPLY, ['id' => $item[$this::IDENTIFIRE]]),
+                        'label' => __('Reply')
                     ];
                 }
             }

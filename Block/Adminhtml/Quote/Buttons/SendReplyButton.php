@@ -12,7 +12,7 @@ use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
  * Class GenericButton
  * @package Mytest\Elevator\Block\Adminhtml\Elevator\Buttons
  */
-class SaveButton implements ButtonProviderInterface
+class SendReplyButton implements ButtonProviderInterface
 {
     protected $context;
     protected $repository;
@@ -28,16 +28,17 @@ class SaveButton implements ButtonProviderInterface
 
     public function getUrl($route = '', $params = [])
     {
-        return $this->context->getUrlBuilder()->getUrl($route, $params);
+        $m = $this->context->getUrlBuilder()->getUrl($route, $params);
+        return $m ;
     }
 
     public function getButtonData()
     {
         return [
-            'label' => __('Save Quote'),
-            'class' => 'save primary',
+            'label' => __('Reply block'),
+            'class' => 'send primary',
             'data_attribute' => [
-                'mage-init' => ['button' => ['event' => 'save']],
+                'mage-init' => ['button' => ['event' => 'send']],
                 'form-role' => 'save',
             ],
             'sort_order' => 90,

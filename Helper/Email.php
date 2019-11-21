@@ -32,7 +32,7 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
             $this->inlineTranslation->suspend();
             $sender = [
                 'name' => $this->escaper->escapeHtml('Test'),
-                'email' => $this->escaper->escapeHtml('s.av.whiledo@gmail.com'),
+                'email' => $this->escaper->escapeHtml('local-part@hostname'),
             ];
             $transport = $this->transportBuilder
                 ->setTemplateIdentifier('email_demo_template')
@@ -42,11 +42,9 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
                         'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID,
                     ]
                 )
-                ->setTemplateVars([
-                    'templateVar'  => 'My Topic',
-                ])
+                ->setTemplateVars(['text'=>$formData[1]])
                 ->setFrom($sender)
-                ->addTo($formData)
+                ->addTo($formData[0])
                 ->getTransport();
             $transport->sendMessage();
             $this->inlineTranslation->resume();
