@@ -13,10 +13,11 @@ class Actions extends Column
     const URL_PATH_DELETE = 'quote_module/index/delete';
     const URL_PATH_REPLY = 'quote_module/index/reply';
 
+    const URL_PATH_DELETE_NEW = 'quote_module/index/deletecommand';
+
     const IDENTIFIRE = 'quote_id';
-    /** @var UrlInterface */
+
     protected $urlBuilder;
-    /** @var string  */
     private $editUrl;
     /**
      * @param ContextInterface      $context
@@ -51,7 +52,8 @@ class Actions extends Column
                         'label' => __('Edit')
                     ];
                     $item[$name]['delete'] = [
-                        'href' => $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['id' => $item[$this::IDENTIFIRE]]),
+//                        'href' => $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['id' => $item[$this::IDENTIFIRE]]),
+                        'href' => $this->urlBuilder->getUrl(self::URL_PATH_DELETE_NEW, ['id' => $item[$this::IDENTIFIRE]]),
                         'label' => __('Delete'),
                         'confirm' => [
                             'title' => __('Delete "${ $.$data.quote_id }"'),

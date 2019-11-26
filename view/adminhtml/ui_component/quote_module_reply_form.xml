@@ -64,7 +64,6 @@
         <field name="customer_first_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <!--<item name="admin__field-my-custom-class" xsi:type="boolean">true</item>-->
                     <item name="resizeEnabled" xsi:type="boolean">true</item>
                     <item name="resizeDefaultHeight" xsi:type="string">200</item>
                     <item name="dataType" xsi:type="string">text</item>
@@ -95,7 +94,7 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" translate="true" xsi:type="string">Comment</item>
-                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
                     <item name="disabled" xsi:type="boolean">true</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                     <item name="dataScope" xsi:type="string">customer_comment</item>

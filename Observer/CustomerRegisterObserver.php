@@ -16,7 +16,9 @@ class CustomerRegisterObserver implements ObserverInterface
     }
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $formData = $observer->getData('findMail');
+        $formData[] = $observer->getData('findMail');
+        $formData[] ="";
+
         return $this->helperEmail->sendEmail($formData);
     }
 }

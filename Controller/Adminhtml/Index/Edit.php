@@ -19,7 +19,7 @@ class Edit extends Base
         if (!empty($id)) {
             try {
                 $model = $this->repository->getById($id);
-                $this->sessionManager->setCurrentQuoteModel($model);
+                $this->_getSession()->setCurrentQuoteModel($model);
             } catch (\Magento\Framework\Exception\NoSuchEntityException $exception) {
                 $this->messageManager->addErrorMessage(__('Entity with id %1 not found', $id));
                 return $this->redirectToGrid();
@@ -29,7 +29,7 @@ class Edit extends Base
                 $model = $this->getModel();
                 $model->setData($this->_getSession()->getFormData());
                 $this->_getSession()->setFormData(null);
-                $this->sessionManager->setCurrentQuoteModel($model);
+                $this->_getSession()->setCurrentQuoteModel($model);
             }
         }
         return parent::execute();

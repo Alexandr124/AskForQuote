@@ -14,10 +14,6 @@ class AddToArchive implements ObserverInterface
 {
     protected $repository;
     protected $modelFactory;
-    /**
-     * @param Observer $observer
-     * @return void
-     */
 
     public function __construct(
 

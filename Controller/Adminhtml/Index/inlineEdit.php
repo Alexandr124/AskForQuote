@@ -2,15 +2,35 @@
 
 namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
 
+use Magento\Backend\App\Action\Context;
+
+
+use Magento\Framework\Controller\Result\JsonFactory;
+
+use Vaimo\QuoteModule\Model\QuoteFactory;
+use Magento\Framework\View\Result\PageFactory;
+use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 use Vaimo\QuoteModule\Controller\Adminhtml\Base;
 
 class InlineEdit extends Base
 {
+    protected $jsonFactory;
+
+    public function __construct(
+        Context $context,
+        PageFactory $pageFactory,
+        Repository $repository,
+        QuoteFactory $factory,
+        JsonFactory $jsonFactory
+    ) {
+        $this->jsonFactory = $jsonFactory;
+        parent::__construct($context, $pageFactory, $repository, $factory );
+    }
 
 
     public function execute()
     {
-        /** @var \Magento\Framework\Controller\Result\Json $resultJson */
+
         $resultJson = $this->jsonFactory->create();
 
         $error = false;

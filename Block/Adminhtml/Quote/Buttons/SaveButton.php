@@ -1,5 +1,4 @@
 <?php
-
 namespace Vaimo\QuoteModule\Block\Adminhtml\Quote\Buttons;
 
 use Magento\Backend\Block\Widget\Context;
@@ -8,10 +7,6 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 
-/**
- * Class GenericButton
- * @package Mytest\Elevator\Block\Adminhtml\Elevator\Buttons
- */
 class SaveButton implements ButtonProviderInterface
 {
     protected $context;
@@ -24,7 +19,6 @@ class SaveButton implements ButtonProviderInterface
         $this->context = $context;
         $this->repository = $repository;
     }
-
 
     public function getUrl($route = '', $params = [])
     {

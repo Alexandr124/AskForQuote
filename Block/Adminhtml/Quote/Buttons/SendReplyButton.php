@@ -1,5 +1,4 @@
 <?php
-
 namespace Vaimo\QuoteModule\Block\Adminhtml\Quote\Buttons;
 
 use Magento\Backend\Block\Widget\Context;

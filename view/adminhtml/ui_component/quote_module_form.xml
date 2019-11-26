@@ -35,6 +35,7 @@
             </item>
         </argument>
         <settings>
+            <!--<submitUrl path="*/*/save"/>-->
             <submitUrl path="*/*/save"/>
         </settings>
         <dataProvider class="Vaimo\QuoteModule\DataProvider\BaseQuoteProvider" name="quote_module_form_data_source">
@@ -120,7 +121,7 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" translate="true" xsi:type="string">Comment</item>
-                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                     <item name="dataScope" xsi:type="string">customer_comment</item>
                     <item name="validation" xsi:type="array">

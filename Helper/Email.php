@@ -50,6 +50,7 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
             $this->inlineTranslation->resume();
         } catch (\Exception $e) {
             $this->logger->debug($e->getMessage());
+            return false;
         }
     }
 }

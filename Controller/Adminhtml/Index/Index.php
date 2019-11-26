@@ -1,5 +1,4 @@
 <?php
-
 namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
 
 use Magento\Framework\Controller\ResultFactory;

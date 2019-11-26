@@ -1,5 +1,4 @@
 <?php
-
 namespace Vaimo\QuoteModule\Controller\Frontend;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -8,7 +7,6 @@ use Magento\Framework\App\Action\Context;
 
 use Vaimo\QuoteModule\Model\QuoteRepository;
 use Vaimo\QuoteModule\Model\QuoteFactory;
-use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 
 class Save extends Action
 {
@@ -29,14 +27,10 @@ class Save extends Action
 
         try{
             $this->repository->save($this->quoteFactory->create()->setData($formData));
-//            $this->messageManager->addSuccessMessage(__('Quote has been saved.'));
+            $this->messageManager->addSuccessMessage(__('Quote was sent'));
 
-            $textDisplay = new \Magento\Framework\DataObject(array('text' => 'Text without Observer'));
-//            $this->_eventManager->dispatch('ask_for_quote_form_sent', ['mp_text' => $textDisplay]);
+
             $this->_eventManager->dispatch('ask_for_quote_form_sent', ['findMail' => $email]);
-
-            $this->messageManager->addSuccessMessage($textDisplay->toString());
-
 
         } catch (\Exception $e){
             if ($e->getMessage()) {

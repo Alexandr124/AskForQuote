@@ -1,6 +1,6 @@
 <?php
-
 namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
+
 use Vaimo\QuoteModule\Controller\Adminhtml\Base as BaseLink;
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 
@@ -24,9 +24,7 @@ class Delete extends Baselink
                 return $this->doRefererRedirect();
             }
         } else {
-            $this->logger->error(
-                sprintf("Require parameter `%s` is missing", static::QUERY_PARAM_ID)
-            );
+                    $this->messageManager->addErrorMessage(__('We can\'t find an item to delete.'));
         }
         return $this->redirectToGrid();
     }

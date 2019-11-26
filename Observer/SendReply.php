@@ -21,11 +21,7 @@ class SendReply implements ObserverInterface
     {
         $formData[] = $observer->getData('email');
         $formData[] = $observer->getData('reply');
-
-//        $model = $this->modelFactory->create();
-//        $model->setData($formData->getParams());
-//        $temp = $formData->getRequest()->getParam('customer_email');
-//        $email = $model->getMail();
+        $status = $observer->getData('status');
 
         return $this->helperEmail->sendEmail($formData);
     }
