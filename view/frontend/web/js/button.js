@@ -17,3 +17,4 @@ define(['jquery', 'underscore', 'uiRegistry', 'Magento_Ui/js/form/components/but
             }
         });
     });
+

@@ -9,8 +9,10 @@
 namespace Vaimo\QuoteModule\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use Vaimo\QuoteModule\Model\ResourceModel\Quote as ResourceModel;
+
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
+use Vaimo\QuoteModule\Model\ResourceModel\Quote as ResourceModel;
+
 
 class Quote extends AbstractModel implements QuoteInterface
 {
@@ -20,76 +22,72 @@ class Quote extends AbstractModel implements QuoteInterface
         $this->_init(ResourceModel::class);
     }
 
-    public function getId()
+    public function getQuoteId()
     {
         return $this->getData(QuoteInterface::ID_FIELD);
     }
 
-    public function getFirstName()
+    public function getCustomerFirstName()
     {
-        return $this->getData(QuoteInterface::FIRST_NAME);
+        return $this->getData(QuoteInterface::CUSTOMER_FIRST_NAME);
     }
 
-    public function setFirstName($first_name)
+    public function setCustomerFirstName($customer_first_name)
     {
-        $this->setData(QuoteInterface::FIRST_NAME, $first_name);
+        $this->setData(QuoteInterface::CUSTOMER_FIRST_NAME, $customer_first_name);
     }
 
-    public function getLastName()
+    public function getCustomerLastName()
     {
         return $this->getData(QuoteInterface::LAST_NAME);
     }
 
-    public function setLastName($name)
+    public function setCustomerLastName($name)
     {
         $this->setData(QuoteInterface::LAST_NAME, $name);
     }
 
-    public function getPhoneNumber()
+    public function getCustomerPhoneNumber()
     {
         return $this->getData(QuoteInterface::PHONE_NUMBER);
     }
 
-    public function setPhoneNumber($number)
+    public function setCustomerPhoneNumber($number)
     {
         $this->setData(QuoteInterface::PHONE_NUMBER, $number);
     }
 
-    public function getComment()
+    public function getCustomerComment()
     {
         return $this->getData(QuoteInterface::COMMENT);
     }
 
-    public function setComment($comment)
+    public function setCustomerComment($comment)
     {
         $this->setData(QuoteInterface::COMMENT, $comment);
     }
 
-    public function getQuoteStatus()
+    public function getStatus()
     {
         return $this->getData(QuoteInterface::QUOTE_STATUS);
     }
 
-    public function setQuoteStatus($status)
+    public function setStatus($quote_status)
     {
-        $this->setData(QuoteInterface::QUOTE_STATUS, $status);
+        $this->setData(QuoteInterface::QUOTE_STATUS, $quote_status);
     }
 
     /**
      * @return mixed
      */
-    public function getMail()
+    public function getCustomerEmail()
     {
         return $this->getData(QuoteInterface::MAIL);
     }
 
-    /**
-     * @param $number
-     * @return mixed
-     */
-    public function setMail($mail)
+    public function setCustomerEmail($customer_email)
     {
-        $this->setData(QuoteInterface::MAIL, $mail);
+        $this->setData(QuoteInterface::MAIL, $customer_email);
     }
 
     public function getQuoteDate()

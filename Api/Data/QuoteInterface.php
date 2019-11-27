@@ -8,21 +8,14 @@
 
 namespace Vaimo\QuoteModule\Api\Data;
 
-/**
- * Interface QuoteInterface
- * @package Vaimo\Quote\Api\Data
- */
-
 interface  QuoteInterface
 {
-    /**
-     *table name in my database
-     */
+
     const TABLE_NAME                = 'vaimo_quote_module';
 
     const ID_FIELD                  = 'quote_id';
 
-    const FIRST_NAME                = 'customer_first_name';
+    const CUSTOMER_FIRST_NAME       = 'customer_first_name';
 
     const LAST_NAME                 = 'customer_last_name';
 
@@ -40,73 +33,56 @@ interface  QuoteInterface
     /**
      * @return mixed
      */
-    public function getId();
+    public function getQuoteId();
+
+    public function getCustomerFirstName();
+
+    public function setCustomerFirstName($customer_first_name);
+
+    public function getCustomerLastName();
+
+
+    public function setCustomerLastName($name);
 
     /**
      * @return mixed
      */
-    public function getFirstName();
-
-    /**
-     * @param $first_name
-     * @return mixed
-     */
-    public function setFirstName($first_name);
-
-    /**
-     * @return mixed
-     */
-    public function getLastName();
-
-    /**
-     * @param $name
-     * @return mixed
-     */
-    public function setLastName($name);
-
-    /**
-     * @return mixed
-     */
-    public function getPhoneNumber();
+    public function getCustomerPhoneNumber();
 
     /**
      * @param $number
      * @return mixed
      */
-    public function setPhoneNumber($number);
+    public function setCustomerPhoneNumber($number);
 
     /**
      * @return mixed
      */
-    public function getMail();
+    public function getCustomerEmail();
 
-    /**
-     * @param $number
-     * @return mixed
-     */
-    public function setMail($mail);
+    public function setCustomerEmail($customer_email);
 
     /**
      * @return mixed
      */
-    public function getComment();
+    public function getCustomerComment();
 
     /**
      * @param $number
      * @return mixed
      */
-    public function setComment($comment);
+    public function setCustomerComment($comment);
 
     /**
      * @return mixed
      */
-    public function getQuoteStatus();
+    public function getStatus();
 
     /**
-     * @param $status
+     * @param $quote_status
      * @return mixed
      */
-    public function setQuoteStatus($status);
+    public function setStatus($quote_status);
 
     public function getQuoteDate();
 

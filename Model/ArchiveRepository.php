@@ -8,24 +8,16 @@
 
 namespace Vaimo\QuoteModule\Model;
 
-use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
-use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface;
 use Vaimo\QuoteModule\Model\ResourceModel\Archive as ResourceModel;
-
-use Vaimo\QuoteModule\Model\ArchiveFactory;
 use Vaimo\QuoteModule\Model\ResourceModel\Archive\CollectionFactory;
 
 
-/**
- * Class QuoteRepository
- * @package Vaimo\Quote\Model
- */
 class ArchiveRepository implements QuoteRepositoryInterface
 {
 

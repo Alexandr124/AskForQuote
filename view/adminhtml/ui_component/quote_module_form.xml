@@ -36,7 +36,7 @@
         </argument>
         <settings>
             <!--<submitUrl path="*/*/save"/>-->
-            <submitUrl path="*/*/save"/>
+            <submitUrl path="*/*/savecommand"/>
         </settings>
         <dataProvider class="Vaimo\QuoteModule\DataProvider\BaseQuoteProvider" name="quote_module_form_data_source">
             <settings>
@@ -141,7 +141,7 @@
                     <item name="sortOrder" xsi:type="number">60</item>
                     <item name="dataScope" xsi:type="string">quote_date</item>
                     <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="required" xsi:type="boolean">true</item>
                         <item name="date" xsi:type="boolean">true</item>  //Could make life harder. Quote wouldn't be saved at all.
                     </item>
                     <item name="options" xsi:type="array">

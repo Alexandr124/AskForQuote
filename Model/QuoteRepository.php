@@ -17,22 +17,16 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface;
 use Vaimo\QuoteModule\Model\ResourceModel\Quote as ResourceModel;
-
-use Vaimo\QuoteModule\Model\QuoteFactory;
 use Vaimo\QuoteModule\Model\ResourceModel\Quote\CollectionFactory;
 
 
-/**
- * Class QuoteRepository
- * @package Vaimo\Quote\Model
- */
 class QuoteRepository implements QuoteRepositoryInterface
 {
 
     protected $archiveResource;
     /** @var ResourceModel */
     protected $resource;
-    /** @var QuoteFactory  */
+
     protected $quoteFactory;
     /** @var CollectionProcessorInterface */
     protected $collectionProcessor;
@@ -95,11 +89,7 @@ class QuoteRepository implements QuoteRepositoryInterface
         // TODO: Implement getList() method.
     }
 
-    /**
-     * @param QuoteInterface $quote
-     * @return mixed|QuoteInterface
-     * @throws CouldNotSaveException
-     */
+
     public function save(QuoteInterface $quote)
     {
         try {

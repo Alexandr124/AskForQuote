@@ -4,6 +4,7 @@ namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
 use Vaimo\QuoteModule\Controller\Adminhtml\Base as BaseLink;
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 use Vaimo\QuoteModule\Model\Command\DeleteByPath;
+use Vaimo\QuoteModule\Model\Command\GetById;
 use Vaimo\QuoteModule\Model\QuoteFactory;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
@@ -12,16 +13,19 @@ use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 class DeleteCommand extends BaseLink
 {
     protected $detelePath;
+    protected $getById;
 
     public function __construct(
-        DeleteByPath $detelePath,
         Context $context,
+        DeleteByPath $detelePath,
         PageFactory $pageFactory,
         Repository $repository,
-        QuoteFactory $factory
+        QuoteFactory $factory,
+        GetById $getById
     ) {
-        $this->detelePath = $detelePath;
         parent::__construct($context, $pageFactory, $repository, $factory);
+        $this->detelePath = $detelePath;
+        $this->getById = $getById;
     }
 
     public function execute()
@@ -31,7 +35,8 @@ class DeleteCommand extends BaseLink
         if (!empty($id)) {
             try {
 
-                $temp = $this->repository->getById($id);
+//                $temp = $this->repository->getById($id);
+                $temp = $this->getById->execute($id);
 
                 $this->detelePath->execute($id);
                 $this->messageManager->addSuccessMessage(__('Quote was deleted.'));
