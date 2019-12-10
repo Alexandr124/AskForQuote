@@ -13,4 +13,4 @@ class ChangeDisplayTextObserver implements \Magento\Framework\Event\ObserverInte
     }
 }
 
-//I do not use this one, Just let it be.
+//I'm not using this one.  Just let it be, like an example.

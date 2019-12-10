@@ -5,7 +5,7 @@ use Magento\Framework\Event\ObserverInterface;
 use Vaimo\QuoteModule\Helper\Email;
 
 
-class CustomerRegisterObserver implements ObserverInterface
+class ConfirmationForGettingQuote implements ObserverInterface
 {
     private $helperEmail;
 

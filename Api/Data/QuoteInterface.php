@@ -11,22 +11,49 @@ namespace Vaimo\QuoteModule\Api\Data;
 interface  QuoteInterface
 {
 
+    /**
+     *
+     */
     const TABLE_NAME                = 'vaimo_quote_module';
 
+    /**
+     *
+     */
     const ID_FIELD                  = 'quote_id';
 
+    /**
+     *
+     */
     const CUSTOMER_FIRST_NAME       = 'customer_first_name';
 
+    /**
+     *
+     */
     const LAST_NAME                 = 'customer_last_name';
 
+    /**
+     *
+     */
     const PHONE_NUMBER              = 'customer_phone_number';
 
+    /**
+     *
+     */
     const MAIL                      = 'customer_email';
 
+    /**
+     *
+     */
     const COMMENT                   = 'customer_comment';
 
+    /**
+     *
+     */
     const QUOTE_DATE                = 'quote_date';
 
+    /**
+     *
+     */
     const QUOTE_STATUS              = 'status';
 
 
@@ -35,13 +62,27 @@ interface  QuoteInterface
      */
     public function getQuoteId();
 
+    /**
+     * @return mixed
+     */
     public function getCustomerFirstName();
 
+    /**
+     * @param $customer_first_name
+     * @return mixed
+     */
     public function setCustomerFirstName($customer_first_name);
 
+    /**
+     * @return mixed
+     */
     public function getCustomerLastName();
 
 
+    /**
+     * @param $name
+     * @return mixed
+     */
     public function setCustomerLastName($name);
 
     /**
@@ -60,6 +101,10 @@ interface  QuoteInterface
      */
     public function getCustomerEmail();
 
+    /**
+     * @param $customer_email
+     * @return mixed
+     */
     public function setCustomerEmail($customer_email);
 
     /**
