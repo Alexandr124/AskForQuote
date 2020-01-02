@@ -4,9 +4,17 @@ namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
 use Vaimo\QuoteModule\Controller\Adminhtml\Base as BaseLink;
 use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 
+/**Single delete action for the Quote grid
+ * Class Delete
+ * @package Vaimo\QuoteModule\Controller\Adminhtml\Index
+ */
 class Delete extends Baselink
 {
 
+    /**Delete via repository. Catching an event and saving deleted quote to the Archive
+     * NOT USABLE FOR THIS MOMENT. CHECK "DeleteCommand" controller
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $id = $this->getRequest()->getParam(static::QUERY_PARAM_ID);

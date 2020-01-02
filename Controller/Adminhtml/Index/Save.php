@@ -4,9 +4,14 @@ namespace Vaimo\QuoteModule\Controller\Adminhtml\Index;
 use Vaimo\QuoteModule\Api\Data\QuoteInterface as QuoteInterface;
 use Vaimo\QuoteModule\Controller\Adminhtml\Base;
 
+/**
+ * Class Save
+ * @package Vaimo\QuoteModule\Controller\Adminhtml\Index
+ */
 class Save extends Base
 {
-    /**
+    /** Saving quote information via repository.
+     *  NOT USABLE FOR THIS MOMENT. CHECK "SaveCommand" controller
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
     public function execute()

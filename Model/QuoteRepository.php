@@ -20,22 +20,43 @@ use Vaimo\QuoteModule\Model\ResourceModel\Quote as ResourceModel;
 use Vaimo\QuoteModule\Model\ResourceModel\Quote\CollectionFactory;
 
 
+/**
+ * Class QuoteRepository
+ * @package Vaimo\QuoteModule\Model
+ */
 class QuoteRepository implements QuoteRepositoryInterface
 {
 
+    /**
+     * @var
+     */
     protected $archiveResource;
     /** @var ResourceModel */
     protected $resource;
 
+    /**
+     * @var QuoteFactory
+     */
     protected $quoteFactory;
     /** @var CollectionProcessorInterface */
     protected $collectionProcessor;
     /** @var CollectionFactory */
     protected $collectionFactory;
 
+    /**
+     * @var ResourceModel
+     */
     private $resourceModel;
 
 
+    /**
+     * QuoteRepository constructor.
+     * @param ResourceModel $resource
+     * @param QuoteFactory $quoteFactory
+     * @param ResourceModel $resourceModel
+     * @param CollectionProcessorInterface $collectionProcessor
+     * @param CollectionFactory $collectionFactory
+     */
     public function __construct(
         ResourceModel $resource,
         QuoteFactory $quoteFactory,
@@ -90,6 +111,11 @@ class QuoteRepository implements QuoteRepositoryInterface
     }
 
 
+    /**
+     * @param QuoteInterface $quote
+     * @return mixed|QuoteInterface
+     * @throws CouldNotSaveException
+     */
     public function save(QuoteInterface $quote)
     {
         try {

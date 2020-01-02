@@ -7,11 +7,26 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 
+/**
+ * Class SaveButton
+ * @package Vaimo\QuoteModule\Block\Adminhtml\Quote\Buttons
+ */
 class SaveButton implements ButtonProviderInterface
 {
+    /**
+     * @var Context
+     */
     protected $context;
+    /**
+     * @var Repository
+     */
     protected $repository;
 
+    /**
+     * SaveButton constructor.
+     * @param Context $context
+     * @param Repository $repository
+     */
     public function __construct(
         Context $context,
         Repository $repository
@@ -20,11 +35,19 @@ class SaveButton implements ButtonProviderInterface
         $this->repository = $repository;
     }
 
+    /**
+     * @param string $route
+     * @param array $params
+     * @return string
+     */
     public function getUrl($route = '', $params = [])
     {
         return $this->context->getUrlBuilder()->getUrl($route, $params);
     }
 
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
         return [

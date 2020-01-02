@@ -13,9 +13,20 @@ use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
  */
 class SendReplyButton implements ButtonProviderInterface
 {
+    /**
+     * @var Context
+     */
     protected $context;
+    /**
+     * @var Repository
+     */
     protected $repository;
 
+    /**
+     * SendReplyButton constructor.
+     * @param Context $context
+     * @param Repository $repository
+     */
     public function __construct(
         Context $context,
         Repository $repository
@@ -25,12 +36,20 @@ class SendReplyButton implements ButtonProviderInterface
     }
 
 
+    /**
+     * @param string $route
+     * @param array $params
+     * @return string
+     */
     public function getUrl($route = '', $params = [])
     {
         $m = $this->context->getUrlBuilder()->getUrl($route, $params);
         return $m ;
     }
 
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
         return [

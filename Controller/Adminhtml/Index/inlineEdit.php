@@ -12,10 +12,25 @@ use Magento\Framework\View\Result\PageFactory;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 use Vaimo\QuoteModule\Controller\Adminhtml\Base;
 
+/**
+ * Class InlineEdit
+ * @package Vaimo\QuoteModule\Controller\Adminhtml\Index
+ */
 class InlineEdit extends Base
 {
+    /**
+     * @var JsonFactory
+     */
     protected $jsonFactory;
 
+    /**
+     * InlineEdit constructor.
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     * @param Repository $repository
+     * @param QuoteFactory $factory
+     * @param JsonFactory $jsonFactory
+     */
     public function __construct(
         Context $context,
         PageFactory $pageFactory,
@@ -28,6 +43,9 @@ class InlineEdit extends Base
     }
 
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
 

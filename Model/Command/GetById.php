@@ -19,7 +19,7 @@ use Psr\Log\LoggerInterface;
  */
 class GetById
 {
-    const TABLE_MEDIA_GALLERY_ASSET = 'vaimo_quote_module';
+    const TABLE_VAIMO_QUOTE_ASSET = 'vaimo_quote_module';
     /**
      * @var ResourceConnection
      */
@@ -60,7 +60,7 @@ class GetById
     public function execute(int $mediaAssetId): QuoteInterface
     {
         try {
-            $mediaAssetTable = $this->resourceConnection->getTableName(self::TABLE_MEDIA_GALLERY_ASSET);
+            $mediaAssetTable = $this->resourceConnection->getTableName(self::TABLE_VAIMO_QUOTE_ASSET);
             $connection = $this->resourceConnection->getConnection();
             $select = $connection->select()
                 ->from(['amg' => $mediaAssetTable])

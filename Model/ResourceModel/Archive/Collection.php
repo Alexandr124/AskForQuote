@@ -12,8 +12,15 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Vaimo\QuoteModule\Model\Archive;
 use Vaimo\QuoteModule\Model\ResourceModel\Archive as GridResource;
 
+/**
+ * Class Collection
+ * @package Vaimo\QuoteModule\Model\ResourceModel\Archive
+ */
 class Collection extends AbstractCollection
 {
+    /**
+     *
+     */
     protected function _construct()
     {
         $this->_init(Archive::class, GridResource::class);

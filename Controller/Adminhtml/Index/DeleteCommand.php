@@ -10,11 +10,30 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 
+/**
+ * Class DeleteCommand
+ * @package Vaimo\QuoteModule\Controller\Adminhtml\Index
+ */
 class DeleteCommand extends BaseLink
 {
+    /**
+     * @var DeleteByPath
+     */
     protected $detelePath;
+    /**
+     * @var GetById
+     */
     protected $getById;
 
+    /**
+     * DeleteCommand constructor.
+     * @param Context $context
+     * @param DeleteByPath $detelePath
+     * @param PageFactory $pageFactory
+     * @param Repository $repository
+     * @param QuoteFactory $factory
+     * @param GetById $getById
+     */
     public function __construct(
         Context $context,
         DeleteByPath $detelePath,
@@ -28,6 +47,9 @@ class DeleteCommand extends BaseLink
         $this->getById = $getById;
     }
 
+    /** Delete via command. Catching an event and saving deleted quote to the Archive
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $id = $this->getRequest()->getParam(static::QUERY_PARAM_ID);
@@ -35,7 +57,6 @@ class DeleteCommand extends BaseLink
         if (!empty($id)) {
             try {
 
-//                $temp = $this->repository->getById($id);
                 $temp = $this->getById->execute($id);
 
                 $this->detelePath->execute($id);

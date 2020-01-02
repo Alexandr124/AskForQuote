@@ -11,7 +11,7 @@
     <preference for="Vaimo\QuoteModule\Api\QuoteRepositoryInterface"
                 type="Vaimo\QuoteModule\Model\QuoteRepository" />
 
-    <preference for="Vaimo\QuoteModule\Model\DataExtractorInterface"
+    <preference for="Vaimo\QuoteModule\Api\Data\DataExtractorInterface"
                 type="Vaimo\QuoteModule\Model\DataExtractor" />
 
 </config>

@@ -9,18 +9,48 @@ use Vaimo\QuoteModule\Api\Data\QuoteInterface;
 use Vaimo\QuoteModule\Model\QuoteRepository;
 use Vaimo\QuoteModule\Model\QuoteFactory;
 
+/**
+ * Class Save
+ * @package Vaimo\QuoteModule\Controller\Frontend
+ */
 class Save extends Action
 {
+    /**
+     * @var QuoteRepository
+     */
     private $repository;
+    /**
+     * @var QuoteFactory
+     */
     private $quoteFactory;
+
+    private $storemanager;
+
+    /**
+     * Save constructor.
+     * @param QuoteFactory $quoteFactory
+     * @param QuoteRepository $quoteRepository
+     * @param Context $context
+     */
     public function __construct(QuoteFactory $quoteFactory,
                                 QuoteRepository $quoteRepository,
-                                Context $context)
+                                Context $context,
+                                \Magento\Store\Model\StoreManagerInterface $storeManager
+    )
     {
         $this->repository = $quoteRepository;
         $this->quoteFactory = $quoteFactory;
         parent::__construct($context);
+        $this->storemanager = $storeManager;
     }
+
+    /** Quote form font
+     * Fields validation enabled
+     *
+     * TODO Redirect to the lastPage is not working.
+     *
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $formData = $this->getRequest()->getParams();
@@ -33,7 +63,6 @@ class Save extends Action
             try {
                 $this->repository->save($this->quoteFactory->create()->setData($formData));
                 $this->messageManager->addSuccessMessage(__('Quote was sent'));
-
 
                 $this->_eventManager->dispatch('ask_for_quote_form_sent', ['findMail' => $email]);
 
@@ -49,6 +78,10 @@ class Save extends Action
 
     }
 
+    /**
+     * @param $formData
+     * @return bool
+     */
     private function validation($formData)
     {
         if (!$formData[QuoteInterface::CUSTOMER_FIRST_NAME] ||
@@ -59,10 +92,16 @@ class Save extends Action
             return true;
         }
     }
+
+    /**
+     * @return \Magento\Framework\Controller\ResultInterface
+     */
     private function redirectToLastPage()
     {
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setUrl($this->_redirect->getRefererUrl());
+        $redirectUrl= $this->storemanager->getStore()->getBaseURL();
+
+        $resultRedirect->setPath($redirectUrl);
         return $resultRedirect;
     }
 }

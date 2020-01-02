@@ -8,13 +8,25 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
 use Vaimo\QuoteModule\Model\ResourceModel\Quote\CollectionFactory;
 use Vaimo\QuoteModule\Model\QuoteFactory;
 
+/**
+ * Class CustomerDataProvider
+ * @package Vaimo\QuoteModule\DataProvider\Frontend
+ */
 class CustomerDataProvider extends AbstractDataProvider
 {
-    private $funnyOrderFactory;
+    /**
+     * @var QuoteFactory
+     */
+    private $quoteFactory;
+    /**
+     * @var SessionFactory
+     */
     private $sessionFactory;
 
+
+
     public function __construct(SessionFactory $sessionFactory,
-                                QuoteFactory $funnyOrderFactory,
+                                QuoteFactory $quoteFactory,
                                 CollectionFactory $collectionFactory ,
                                 \Magento\Framework\Stdlib\DateTime\DateTime $date,
                                 $name,
@@ -24,24 +36,28 @@ class CustomerDataProvider extends AbstractDataProvider
                                 array $data = []
     ) {
         $this->sessionFactory    = $sessionFactory;
-        $this->funnyOrderFactory = $funnyOrderFactory;
+        $this->quoteFactory = $quoteFactory;
         $this->date = $date;
         $this->collection = $collectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
+
+    /**
+     * @return array
+     */
     public function getData()
     {
         if ($this->sessionFactory->create()->getCustomer()) {
-            $name  = $this->sessionFactory->create()->getCustomer()->getFirstname();
-            $surname  = $this->sessionFactory->create()->getCustomer()->getLastname();
+            $name  = $this->sessionFactory->create()->getCustomer()->getCustomerFirstName();
+            $surname  = $this->sessionFactory->create()->getCustomer()->getCustomerLastname();
             $email = $this->sessionFactory->create()->getCustomer()->getEmail();
 
             $date = $this->date->gmtDate('Y-m-d');
-            $model = $this->funnyOrderFactory->create();
-            $model->setFirstName($name);
-            $model->setLastName($surname);
+            $model = $this->quoteFactory->create();
+            $model->setCustomerFirstName($name);
+            $model->setCustomerLastName($surname);
             $model->setQuoteDate($date);
-            $model->setMail($email);
+            $model->setCustomerEmail($email);
 
             return [$model->getId() => $model->getData()];
         }

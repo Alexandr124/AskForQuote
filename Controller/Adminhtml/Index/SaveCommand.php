@@ -9,10 +9,25 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 
+/**
+ * Class SaveCommand
+ * @package Vaimo\QuoteModule\Controller\Adminhtml\Index
+ */
 class SaveCommand extends Base
 {
+    /**
+     * @var SaveByPath
+     */
     protected $saveByPath;
 
+    /**
+     * SaveCommand constructor.
+     * @param SaveByPath $saveByPath
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     * @param Repository $repository
+     * @param QuoteFactory $factory
+     */
     public function __construct(
         SaveByPath $saveByPath,
         Context $context,
@@ -24,6 +39,9 @@ class SaveCommand extends Base
         parent::__construct($context, $pageFactory, $repository, $factory);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $isPost = $this->getRequest()->isPost();
@@ -43,7 +61,6 @@ class SaveCommand extends Base
 
             try {
 
-//                $model = $this->repository->save($model);
                 $this->saveByPath->execute($model);
 
                 $this->messageManager->addSuccessMessage(__('Quote was saved.'));

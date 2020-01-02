@@ -7,17 +7,42 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class Actions
+ * @package Vaimo\QuoteModule\UI\Component\Listing\Column
+ */
 class Actions extends Column
 {
+    /**
+     *
+     */
     const URL_PATH_EDIT = 'quote_module/index/edit';
+    /**
+     *
+     */
     const URL_PATH_DELETE = 'quote_module/index/delete';
+    /**
+     *
+     */
     const URL_PATH_REPLY = 'quote_module/index/reply';
 
+    /** New delete controller using command, but not repository
+     *
+     */
     const URL_PATH_DELETE_NEW = 'quote_module/index/deletecommand';
 
+    /**
+     *
+     */
     const IDENTIFIRE = 'quote_id';
 
+    /**
+     * @var UrlInterface
+     */
     protected $urlBuilder;
+    /**
+     * @var string
+     */
     private $editUrl;
     /**
      * @param ContextInterface      $context
@@ -41,6 +66,10 @@ class Actions extends Column
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
+    /**
+     * @param array $dataSource
+     * @return array
+     */
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {

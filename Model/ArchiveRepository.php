@@ -18,16 +18,43 @@ use Vaimo\QuoteModule\Model\ResourceModel\Archive as ResourceModel;
 use Vaimo\QuoteModule\Model\ResourceModel\Archive\CollectionFactory;
 
 
+/**
+ * Class ArchiveRepository
+ * @package Vaimo\QuoteModule\Model
+ */
 class ArchiveRepository implements QuoteRepositoryInterface
 {
 
+    /**
+     * @var ResourceModel
+     */
     protected $resource;
+    /**
+     * @var ArchiveFactory
+     */
     protected $archiveFactory;
+    /**
+     * @var CollectionProcessorInterface
+     */
     protected $collectionProcessor;
+    /**
+     * @var CollectionFactory
+     */
     protected $collectionFactory;
 
+    /**
+     * @var ResourceModel
+     */
     private $resourceModel;
 
+    /**
+     * ArchiveRepository constructor.
+     * @param ResourceModel $resource
+     * @param ArchiveFactory $archiveFactory
+     * @param ResourceModel $resourceModel
+     * @param CollectionProcessorInterface $collectionProcessor
+     * @param CollectionFactory $collectionFactory
+     */
     public function __construct(
         ResourceModel $resource,
         ArchiveFactory $archiveFactory,
@@ -44,7 +71,11 @@ class ArchiveRepository implements QuoteRepositoryInterface
     }
 
 
-
+    /**
+     * @param $id
+     * @return mixed
+     * @throws NoSuchEntityException
+     */
     public function getById($id)
     {
         $quote = $this->archiveFactory->create();
@@ -56,6 +87,10 @@ class ArchiveRepository implements QuoteRepositoryInterface
     }
 
 
+    /**
+     * @param $id
+     * @return mixed|void
+     */
     public function deleteById($id)
     {
         try {
@@ -66,6 +101,11 @@ class ArchiveRepository implements QuoteRepositoryInterface
     }
 
 
+    /**
+     * @param QuoteInterface $archive
+     * @return mixed|QuoteInterface
+     * @throws \Magento\Framework\Exception\CouldNotSaveException
+     */
     public function save(QuoteInterface $archive)
     {
         try {

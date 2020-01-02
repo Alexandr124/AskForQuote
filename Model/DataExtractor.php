@@ -3,9 +3,9 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 namespace Vaimo\QuoteModule\Model;
 
+use Vaimo\QuoteModule\Api\Data\DataExtractorInterface;
 /**
  * Extract data from an object using available getters
  */

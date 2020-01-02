@@ -9,9 +9,16 @@
 namespace Vaimo\QuoteModule\Model\Category\Attribute\Source;
 
 
+/** Returning possible statuses for the quote.
+ * Class Category
+ * @package Vaimo\QuoteModule\Model\Category\Attribute\Source
+ */
 class Category implements \Magento\Framework\Option\ArrayInterface
 {
     //Below function is supposed to return options.
+    /**
+     * @return array
+     */
     public function toOptionArray()
     {
         return [

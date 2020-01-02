@@ -10,11 +10,26 @@ use Vaimo\QuoteModule\Model\ArchiveFactory;
 use Vaimo\QuoteModule\Model\ArchiveRepository as Repository;
 
 
+/**
+ * Class AddToArchive
+ * @package Vaimo\QuoteModule\Observer
+ */
 class AddToArchive implements ObserverInterface
 {
+    /**
+     * @var Repository
+     */
     protected $repository;
+    /**
+     * @var ArchiveFactory
+     */
     protected $modelFactory;
 
+    /**
+     * AddToArchive constructor.
+     * @param Repository $repostitory
+     * @param ArchiveFactory $factory
+     */
     public function __construct(
 
         Repository $repostitory,
@@ -32,12 +47,14 @@ class AddToArchive implements ObserverInterface
         $deletedQuote = $observer->getData('deletedModel');
         $model = $this->modelFactory->create();
 
-        $model->setFirstName($deletedQuote->getFirstName());
-        $model->setLastName($deletedQuote->getLastName());
-        $model->setPhoneNumber($deletedQuote->getPhoneNumber());
-        $model->setMail($deletedQuote->getMail());
-        $model->setComment($deletedQuote->getComment());
+
+        $model->setCustomerFirstName($deletedQuote->getCustomerFirstName());
+        $model->setCustomerLastName($deletedQuote->getCustomerLastName());
+        $model->setCustomerPhoneNumber($deletedQuote->getCustomerPhoneNumber());
+        $model->setCustomerEmail($deletedQuote->getCustomerEmail());
+        $model->setCustomerComment($deletedQuote->getCustomerComment());
         $model->setQuoteDate($deletedQuote->getQuoteDate());
+
 
 
         try {

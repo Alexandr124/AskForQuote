@@ -9,9 +9,25 @@ use Vaimo\QuoteModule\Model\QuoteFactory;
 use Magento\Framework\View\Result\PageFactory;
 use Vaimo\QuoteModule\Api\QuoteRepositoryInterface as Repository;
 
+/**
+ * Class Send
+ * @package Vaimo\QuoteModule\Controller\Adminhtml\Index
+ */
 class Send extends Base
 {
+    /**
+     * @var LoggerInterface
+     */
     private $logger;
+
+    /**
+     * Send constructor.
+     * @param LoggerInterface $logger
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     * @param Repository $repository
+     * @param QuoteFactory $factory
+     */
     public function __construct(
         LoggerInterface $logger,
         Context $context,
@@ -22,6 +38,10 @@ class Send extends Base
         $this->logger = $logger;
         parent::__construct($context, $pageFactory, $repository, $factory);
     }
+
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         $isPost = $this->getRequest()->isPost();

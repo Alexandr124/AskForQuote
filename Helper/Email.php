@@ -6,13 +6,36 @@ use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\Mail\Template\TransportBuilder;
 
+/**
+ * Class Email
+ * @package Vaimo\QuoteModule\Helper
+ */
 class Email extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    /**
+     * @var StateInterface
+     */
     protected $inlineTranslation;
+    /**
+     * @var Escaper
+     */
     protected $escaper;
+    /**
+     * @var TransportBuilder
+     */
     protected $transportBuilder;
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
     protected $logger;
 
+    /**
+     * Email constructor.
+     * @param Context $context
+     * @param StateInterface $inlineTranslation
+     * @param Escaper $escaper
+     * @param TransportBuilder $transportBuilder
+     */
     public function __construct(
         Context $context,
         StateInterface $inlineTranslation,
@@ -26,6 +49,10 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
         $this->logger = $context->getLogger();
     }
 
+    /**
+     * @param $formData
+     * @return bool
+     */
     public function sendEmail($formData)
     {
         try {
