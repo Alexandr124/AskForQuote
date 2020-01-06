@@ -56,7 +56,7 @@ class InlineEdit extends Base
         if ($this->getRequest()->getParam('isAjax')) {
             $postItems = $this->getRequest()->getParam('items', []);
             if (!count($postItems)) {
-                $messages[] = __('Please correct the data sent.');
+                $messages[] = __('Please correct the data');
                 $error = true;
             } else {
                 foreach (array_keys($postItems) as $quoteId) {

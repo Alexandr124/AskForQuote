@@ -1,0 +1,7 @@
+.admin__menu .level-0.item-quotes > a:before {
+    content: url('../images/icon.png');
+    height:auto;
+}
+li#menu-vendor_extension-menu_id > a > span {
+    display: none;
+}

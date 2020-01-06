@@ -58,7 +58,7 @@ class Save extends Action
 
         if(!$this->validation($formData)){
             $this->messageManager->addErrorMessage(__('Check out please data in fields'));
-            return $this->redirectToLastPage();
+//            return $this->redirectToLastPage();
         } else {
             try {
                 $this->repository->save($this->quoteFactory->create()->setData($formData));

@@ -53,7 +53,7 @@ class SendReplyButton implements ButtonProviderInterface
     public function getButtonData()
     {
         return [
-            'label' => __('Reply block'),
+            'label' => __('Reply'),
             'class' => 'send primary',
             'data_attribute' => [
                 'mage-init' => ['button' => ['event' => 'send']],

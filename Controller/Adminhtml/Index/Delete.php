@@ -28,7 +28,7 @@ class Delete extends Baselink
                 $this->repository->deleteById($id);
                 $this->messageManager->addSuccessMessage(__('Quote was deleted.'));
             } catch (\Exception $e) {
-                $this->messageManager->addErrorMessage(_('Link can\'t be deleted'));
+                $this->messageManager->addErrorMessage(_('Quote can\'t be deleted'));
                 return $this->doRefererRedirect();
             }
         } else {
